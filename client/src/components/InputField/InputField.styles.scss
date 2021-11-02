@@ -1,0 +1,20 @@
+.inputField-container {
+    input {
+        @apply border-b-2
+        focus:border-green-700
+        focus:outline-none
+        transition duration-1000
+        font-semibold
+        text-2xl
+        rounded-lg
+        text-green-500
+         bg-opacity-95
+       hover:bg-yellow-50;
+    }
+    label {
+        @apply block
+        capitalize
+        font-bold
+        text-yellow-600;
+    }
+}

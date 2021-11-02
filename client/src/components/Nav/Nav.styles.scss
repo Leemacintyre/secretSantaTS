@@ -1,0 +1,24 @@
+.nav-container {
+    @apply absolute 
+    w-full
+    bg-purple-700
+    flex
+    justify-between
+    py-5
+    px-10
+    transform;
+    .nav-linkContainer {
+        @apply text-xl
+        font-bold
+        text-white
+        hover:text-green-300
+        hover:shadow-3xl       
+        transition
+        duration-700 ease-in-out;
+    }
+    .nav-userId {
+        @apply text-xl
+         font-bold
+        text-white;
+    }
+}

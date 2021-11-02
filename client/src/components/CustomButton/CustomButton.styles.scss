@@ -1,0 +1,16 @@
+.customButton {
+    @apply capitalize 
+    bg-green-500
+    hover:bg-green-600
+    text-white
+    font-bold
+    border-2
+    border-transparent
+    hover:border-green-900
+    transition 
+    duration-700
+    p-2
+    m-2
+    rounded-lg
+    shadow-inner;
+}
