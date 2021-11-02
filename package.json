@@ -1,0 +1,15 @@
+{
+    "dependencies": {
+        "axios": "^0.24.0",
+        "concurrently": "^6.3.0"
+    },
+    "scripts": {
+        "install-server": "npm install --prefix server",
+        "install-client": "npm install --prefix client",
+        "pre-i": "npm install && npm run install-server && npm run install-client",
+        "server": "npm run watch --prefix server",
+        "client": "npm start --prefix client",
+        "watch": "concurrently \"npm run server\" \"npm run client\"",
+        "deploy": "npm run build --prefix client && npm run start --prefix server"
+    }
+}
