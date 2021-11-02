@@ -9,9 +9,14 @@ import dotenv from "dotenv";
 dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export async function getAllEmailList(): Promise<EmailList[]> {
+export async function getAllEmailList(
+    currentUser: string
+): Promise<EmailList[]> {
     try {
-        return await EmailListModel.find();
+        const emailList = await EmailListModel.find({ groupId: currentUser });
+        console.log(emailList);
+
+        return emailList;
     } catch (error) {
         console.log(`Could not get email list ${error}`);
     }
@@ -31,9 +36,9 @@ export async function createEmailList(req: Request, res: Response) {
     }
 }
 
-export async function sendEmailList(req: Request, res: Response) {
+export async function sendEmailList(currentUser: string) {
     try {
-        const emailList: EmailList[] = await EmailListModel.find();
+        const emailList: EmailList[] = await getAllEmailList(currentUser);
         const listToEdit: EmailList[] = [...emailList];
         const shuffledList: PeopleArr[] = checkAndCreateShufflesArray(
             listToEdit,
@@ -54,8 +59,8 @@ export async function sendEmailList(req: Request, res: Response) {
             const msg = {
                 to: `${emailTo}`, // Change to your recipient
                 from: "tempzaq1234@gmail.com", // Change to your verified sender
-                subject: `${fName} Sending with SendGrid is Fun`,
-                text: "and easy to do anywhere, even with Node.js",
+                subject: `${fName} is your secret santa`,
+                text: "and easy to do anywhere, even with Node.",
                 html: "<strong>and easy to do anywhere, even with Node.js</strong>",
             };
             sgMail

@@ -5,7 +5,7 @@ import {
 } from "../../models/emailList/emailList.model";
 import { Request, Response } from "express";
 
-interface IGetUserAuthInfoRequest extends Request {
+export interface IGetUserAuthInfoRequest extends Request {
     user: any;
 }
 
@@ -15,12 +15,9 @@ export async function httpGetAllEmailList(
 ) {
     try {
         console.log("httpGetAllEmailList");
-        console.log(req.user);
-
         const currentUser = await req.user.id;
-        console.log("here", currentUser);
 
-        return res.status(200).json(await getAllEmailList());
+        return res.status(200).json(await getAllEmailList(currentUser));
     } catch (error) {
         return res
             .status(400)
@@ -39,10 +36,14 @@ export async function httpCreateEmailList(req: Request, res: Response) {
     }
 }
 
-export async function httpSendEmailList(req: Request, res: Response) {
+export async function httpSendEmailList(
+    req: IGetUserAuthInfoRequest,
+    res: Response
+) {
     try {
         console.log("httpSendEmailList");
-        return res.status(201).json(await sendEmailList(req, res));
+        const currentUser = await req.user.id;
+        return res.status(201).json(await sendEmailList(currentUser));
     } catch (error) {
         return res
             .status(400)

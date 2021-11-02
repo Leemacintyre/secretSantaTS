@@ -4,6 +4,7 @@ export interface EmailList extends Document {
     fName: string;
     email: string;
     groupId: string;
+    _id?: number;
 }
 
 const emailListSchema = new Schema<EmailList>({

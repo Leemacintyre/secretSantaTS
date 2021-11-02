@@ -15,7 +15,7 @@ export const getAllPlayers = async () => {
 export const addPlayerToGroup = async (player: PlayerStateData) => {
     const { email, fName, groupId } = player;
     try {
-        axios.post("http://localhost:8000/v1/emailList/createEmailList", {
+        axios.post("http://localhost:3000/v1/emailList/createEmailList", {
             email,
             fName,
             groupId,
@@ -28,7 +28,7 @@ export const addPlayerToGroup = async (player: PlayerStateData) => {
 export const sendOutEmails = async () => {
     try {
         const { data } = await axios.get(
-            "http://localhost:8000/v1/emailList/sendNewEmail"
+            "http://localhost:3000/v1/emailList/sendNewEmail"
         );
         return data;
     } catch (error) {

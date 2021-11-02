@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./SignUpPage.styles.scss";
+import { useCookies } from "react-cookie";
+
 import CustomButton from "../../components/CustomButton/CustomButton.component";
 import InputField from "../../components/InputField/InputField.component";
 import { addPlayerToGroup, sendOutEmails } from "../../hooks/axiosRequests";
@@ -23,6 +25,7 @@ const SignUpPage: React.FC<any> = () => {
         groupId: "",
     });
     const { email, fName, groupId } = members;
+    const [cookies] = useCookies(["currentUser"]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { value, name } = event.target;
@@ -73,12 +76,14 @@ const SignUpPage: React.FC<any> = () => {
                     </div>
                     <div className="signUpPage-button-container">
                         <CustomButton type="submit">Join Group</CustomButton>
-                        <CustomButton>Create Group</CustomButton>
+                        {/* <CustomButton>Create Group</CustomButton> */}
                     </div>
                 </form>
-                <CustomButton onClick={sendOutEmailHelper}>
-                    Send Out Emails
-                </CustomButton>
+                {cookies.currentUser?._id ? (
+                    <CustomButton onClick={sendOutEmailHelper}>
+                        Send Out Emails
+                    </CustomButton>
+                ) : null}
             </div>
         </div>
     );
