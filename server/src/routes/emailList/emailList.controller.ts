@@ -15,7 +15,9 @@ export async function httpGetAllEmailList(
 ) {
     try {
         console.log("httpGetAllEmailList");
-        const currentUser = await req.user.id;
+        const firstName = await req.user.fName;
+        const lastName = await req.user.lName;
+        const currentUser = `${firstName}${lastName}`;
 
         return res.status(200).json(await getAllEmailList(currentUser));
     } catch (error) {
@@ -42,7 +44,9 @@ export async function httpSendEmailList(
 ) {
     try {
         console.log("httpSendEmailList");
-        const currentUser = await req.user.id;
+        const firstName = await req.user.fName;
+        const lastName = await req.user.lName;
+        const currentUser = `${firstName}${lastName}`;
         return res.status(201).json(await sendEmailList(currentUser));
     } catch (error) {
         return res

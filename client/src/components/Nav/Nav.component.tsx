@@ -11,7 +11,12 @@ const Nav: React.FC<navData> = ({ currentUser }) => {
     console.log(currentUser);
     return (
         <div className={"nav-container"}>
-            <div className={"nav-userId"}>Group ID: {currentUser?._id}</div>
+            <div className={"nav-userIdContainer"}>
+                Group ID: &nbsp;
+                <div className={"nav-userId"}>
+                    {` ${currentUser?.fName}${currentUser?.lName}`}
+                </div>
+            </div>
             <div className={"nav-linkContainer"}>
                 {!currentUser?._id ? (
                     <a href="http://localhost:8000/v1/google/auth/google">

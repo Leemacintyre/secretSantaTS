@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./SignUpPage.styles.scss";
-import { useCookies } from "react-cookie";
-
 import CustomButton from "../../components/CustomButton/CustomButton.component";
 import InputField from "../../components/InputField/InputField.component";
 import { addPlayerToGroup, sendOutEmails } from "../../hooks/axiosRequests";
@@ -25,7 +23,6 @@ const SignUpPage: React.FC<any> = () => {
         groupId: "",
     });
     const { email, fName, groupId } = members;
-    const [cookies] = useCookies(["currentUser"]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { value, name } = event.target;
@@ -54,7 +51,7 @@ const SignUpPage: React.FC<any> = () => {
                     <div className="signUpPage-input-container">
                         <InputField
                             name={"fName"}
-                            label={"Name"}
+                            label={"Full Name"}
                             type="text"
                             value={fName}
                             handleChange={handleChange}
@@ -74,16 +71,17 @@ const SignUpPage: React.FC<any> = () => {
                             handleChange={handleChange}
                         />
                     </div>
-                    <div className="signUpPage-button-container">
+                    <div className="signUpPage-button-form">
                         <CustomButton type="submit">Join Group</CustomButton>
-                        {/* <CustomButton>Create Group</CustomButton> */}
+                        <CustomButton
+                            type="button"
+                            onClick={sendOutEmailHelper}
+                        >
+                            Send Out Emails
+                        </CustomButton>
                     </div>
                 </form>
-                {cookies.currentUser?._id ? (
-                    <CustomButton onClick={sendOutEmailHelper}>
-                        Send Out Emails
-                    </CustomButton>
-                ) : null}
+                <div className="signUpPage-button"></div>
             </div>
         </div>
     );

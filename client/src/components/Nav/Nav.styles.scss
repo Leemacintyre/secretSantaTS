@@ -16,9 +16,13 @@
         transition
         duration-700 ease-in-out;
     }
-    .nav-userId {
+    .nav-userIdContainer {
         @apply text-xl
          font-bold
-        text-white;
+        text-white
+        sm:flex;
+        .nav-userId {
+            /* @apply; */
+        }
     }
 }

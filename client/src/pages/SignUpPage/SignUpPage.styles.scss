@@ -3,7 +3,6 @@
 
     .signUpPage-form-container {
         @apply w-96
-         mt-64 
          bg-gray-300 
          h-96 
          rounded-lg 
@@ -21,7 +20,7 @@
         }
         form {
             .signUpPage-button-container {
-                /* @apply w-4/5 flex justify-end; */
+                /* @apply w-4/5 flex justify-end;*/
             }
         }
     }

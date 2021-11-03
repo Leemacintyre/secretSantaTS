@@ -28,7 +28,10 @@ export const addPlayerToGroup = async (player: PlayerStateData) => {
 export const sendOutEmails = async () => {
     try {
         const { data } = await axios.get(
-            "http://localhost:3000/v1/emailList/sendNewEmail"
+            "http://localhost:3000/v1/emailList/sendNewEmail",
+            {
+                withCredentials: true,
+            }
         );
         return data;
     } catch (error) {

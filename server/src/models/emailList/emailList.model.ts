@@ -13,6 +13,7 @@ export async function getAllEmailList(
     currentUser: string
 ): Promise<EmailList[]> {
     try {
+        console.log(currentUser);
         const emailList = await EmailListModel.find({ groupId: currentUser });
         console.log(emailList);
 
@@ -36,7 +37,7 @@ export async function createEmailList(req: Request, res: Response) {
     }
 }
 
-export async function sendEmailList(currentUser: string) {
+export async function sendEmailList(currentUser: any) {
     try {
         const emailList: EmailList[] = await getAllEmailList(currentUser);
         const listToEdit: EmailList[] = [...emailList];
@@ -59,9 +60,14 @@ export async function sendEmailList(currentUser: string) {
             const msg = {
                 to: `${emailTo}`, // Change to your recipient
                 from: "tempzaq1234@gmail.com", // Change to your verified sender
-                subject: `${fName} is your secret santa`,
+                subject: `Who are you buying a gift for this year?`,
                 text: "and easy to do anywhere, even with Node.",
-                html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+                html: `
+                <h1>Dear Santa,</h1>
+                <h3>This year you are buying a gift for ${fName}.</h3>
+                <h3>Please do not spend more than £10</h3>
+                <h3>Merry Christmas!</h3>
+                `,
             };
             sgMail
                 .send(msg)
