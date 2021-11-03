@@ -4,7 +4,8 @@
         "concurrently": "^6.3.0"
     },
     "scripts": {
-        "start": "node server/dist/server.js",
+        "start": "node server/src/server.js",
+        "postinstall": "tsc --prefix server",
         "heroku-postbuild": "npm run install-server",
         "install-server": "npm install --prefix server",
         "install-client": "npm install --prefix client",
