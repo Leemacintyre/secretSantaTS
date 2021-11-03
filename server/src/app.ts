@@ -26,7 +26,10 @@ authFlow(app);
 
 app.use(
     cors({
-        origin: ["http://localhost:3000"],
+        origin: [
+            "http://localhost:3000",
+            "https://git.heroku.com/secretsanta-react-ts",
+        ],
     })
 );
 

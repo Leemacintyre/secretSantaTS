@@ -13,17 +13,21 @@ const Nav: React.FC<navData> = ({ currentUser }) => {
         <div className={"nav-container"}>
             <div className={"nav-userIdContainer"}>
                 Group ID: &nbsp;
-                <div className={"nav-userId"}>
-                    {` ${currentUser?.fName}${currentUser?.lName}`}
-                </div>
+                {currentUser?.fName ? (
+                    <div className={"nav-userId"}>
+                        {` ${currentUser?.fName}${currentUser?.lName}`}
+                    </div>
+                ) : null}
             </div>
             <div className={"nav-linkContainer"}>
                 {!currentUser?._id ? (
-                    <a href="http://localhost:8000/v1/google/auth/google">
+                    <a href="https://git.heroku.com/secretsanta-react-ts/v1/google/auth/google">
                         Login
                     </a>
                 ) : (
-                    <a href="http://localhost:8000/v1/google/logout">Log out</a>
+                    <a href="https://git.heroku.com/secretsanta-react-ts/v1/google/logout">
+                        Log out
+                    </a>
                 )}
             </div>
         </div>

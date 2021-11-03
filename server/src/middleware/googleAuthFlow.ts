@@ -10,7 +10,7 @@ export function signInWithGoogleStart() {
 export function signInWithGoogleCallback() {
     return passport.authenticate("google", {
         failureRedirect: "/failure",
-        successRedirect: "http://localhost:3000/",
+        successRedirect: "https://git.heroku.com/secretsanta-react-ts/",
         session: true,
     });
 }

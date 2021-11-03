@@ -3,9 +3,12 @@ import { PlayerStateData } from "../pages/SignUpPage/SignUpPage.component";
 
 export const getAllPlayers = async () => {
     try {
-        const { data } = await axios.get("http://localhost:3000/v1/emailList", {
-            withCredentials: true,
-        });
+        const { data } = await axios.get(
+            "https://git.heroku.com/secretsanta-react-ts/v1/emailList",
+            {
+                withCredentials: true,
+            }
+        );
         return data;
     } catch (error) {
         console.log(error);
@@ -15,11 +18,14 @@ export const getAllPlayers = async () => {
 export const addPlayerToGroup = async (player: PlayerStateData) => {
     const { email, fName, groupId } = player;
     try {
-        axios.post("http://localhost:3000/v1/emailList/createEmailList", {
-            email,
-            fName,
-            groupId,
-        });
+        axios.post(
+            "https://git.heroku.com/secretsanta-react-ts/v1/emailList/createEmailList",
+            {
+                email,
+                fName,
+                groupId,
+            }
+        );
     } catch (error) {
         console.log(error);
     }
@@ -28,7 +34,7 @@ export const addPlayerToGroup = async (player: PlayerStateData) => {
 export const sendOutEmails = async () => {
     try {
         const { data } = await axios.get(
-            "http://localhost:3000/v1/emailList/sendNewEmail",
+            "https://git.heroku.com/secretsanta-react-ts/v1/emailList/sendNewEmail",
             {
                 withCredentials: true,
             }
@@ -42,7 +48,7 @@ export const sendOutEmails = async () => {
 export const getCurrentUser = async () => {
     try {
         const { data } = await axios.get(
-            "http://localhost:3000/v1/currentuser",
+            "https://git.heroku.com/secretsanta-react-ts/v1/currentuser",
             {
                 withCredentials: true,
             }
