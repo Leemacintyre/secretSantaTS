@@ -4,8 +4,6 @@
         "concurrently": "^6.3.0"
     },
     "scripts": {
-        "start": "ts-node server/src/server.ts",
-        "heroku-postbuild": "npm run install-server",
         "install-server": "npm install --prefix server",
         "install-client": "npm install --prefix client",
         "pre-i": "npm install && npm run install-server && npm run install-client",
