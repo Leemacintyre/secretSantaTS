@@ -24,7 +24,10 @@ app.use(passport_1.default.session());
 // app.use(helmet({ contentSecurityPolicy: false }));
 // test
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:3000"],
+    origin: [
+        "http://localhost:3000",
+        "https://secretsanta-react-ts.herokuapp.com/",
+    ],
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, "..", "public")));

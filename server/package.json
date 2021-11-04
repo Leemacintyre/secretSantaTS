@@ -7,8 +7,8 @@
         "start": "tsc && node dist/server.js",
         "heroku-postbuild": "npm run install-server",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "devstart": "tsc && node dist/server.js",
-        "watch": "tsc && nodemon dist/server.js",
+        "devstart": "tsc && node dist1/server.js",
+        "watch": "tsc && nodemon dist1/server.js",
         "install-server": "npm install --prefix server",
         "install-client": "npm install --prefix client"
     },
@@ -25,9 +25,7 @@
         "mongoose": "^6.0.12",
         "nodemon": "^2.0.14",
         "passport": "^0.5.0",
-        "passport-google-oauth20": "^2.0.0",
-        "ts-node": "^10.4.0",
-        "tsc": "^2.0.3"
+        "passport-google-oauth20": "^2.0.0"
     },
     "devDependencies": {
         "@types/cookie-session": "^2.0.43",

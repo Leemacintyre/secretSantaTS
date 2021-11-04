@@ -15,7 +15,7 @@ exports.signInWithGoogleStart = signInWithGoogleStart;
 function signInWithGoogleCallback() {
     return passport_1.default.authenticate("google", {
         failureRedirect: "/failure",
-        successRedirect: "http://localhost:3000/",
+        successRedirect: "https://secretsanta-react-ts.herokuapp.com/",
         session: true,
     });
 }
