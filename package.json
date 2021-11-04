@@ -6,7 +6,7 @@
         "typescript": "^4.4.4"
     },
     "scripts": {
-        "start": "node server/dist/server.js",
+        "start": "node server/dist1/server.js",
         "heroku-postbuild": "npm run install-server",
         "install-server": "npm install --prefix server",
         "install-client": "npm install --prefix client",
