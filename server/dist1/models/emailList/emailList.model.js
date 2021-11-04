@@ -43,15 +43,13 @@ function createEmailList(req, res) {
             if (checkIfEmailExists) {
                 throw Error;
             }
-            else {
-                const newList = new emailList_mongo_1.default({
-                    fName: req.body.fName,
-                    email: req.body.email,
-                    groupId: req.body.groupId,
-                });
-                console.log(newList);
-                return yield newList.save();
-            }
+            const newList = new emailList_mongo_1.default({
+                fName: req.body.fName,
+                email: req.body.email,
+                groupId: req.body.groupId,
+            });
+            console.log(newList);
+            return yield newList.save();
         }
         catch (error) {
             console.log(`Could not post to email list ${error}`);

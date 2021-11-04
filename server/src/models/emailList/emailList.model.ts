@@ -30,15 +30,14 @@ export async function createEmailList(req: Request, res: Response) {
         });
         if (checkIfEmailExists) {
             throw Error;
-        } else {
-            const newList: EmailList = new EmailListModel({
-                fName: req.body.fName,
-                email: req.body.email,
-                groupId: req.body.groupId,
-            });
-            console.log(newList);
-            return await newList.save();
         }
+        const newList: EmailList = new EmailListModel({
+            fName: req.body.fName,
+            email: req.body.email,
+            groupId: req.body.groupId,
+        });
+        console.log(newList);
+        return await newList.save();
     } catch (error) {
         console.log(`Could not post to email list ${error}`);
     }
