@@ -37,12 +37,6 @@ exports.getAllEmailList = getAllEmailList;
 function createEmailList(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const checkIfEmailExists = yield emailList_mongo_1.default.find({
-                email: req.body.email,
-            });
-            if (checkIfEmailExists) {
-                throw Error;
-            }
             const newList = new emailList_mongo_1.default({
                 fName: req.body.fName,
                 email: req.body.email,

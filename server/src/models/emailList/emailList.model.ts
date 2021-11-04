@@ -25,12 +25,6 @@ export async function getAllEmailList(
 
 export async function createEmailList(req: Request, res: Response) {
     try {
-        const checkIfEmailExists = await EmailListModel.find({
-            email: req.body.email,
-        });
-        if (checkIfEmailExists) {
-            throw Error;
-        }
         const newList: EmailList = new EmailListModel({
             fName: req.body.fName,
             email: req.body.email,
