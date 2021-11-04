@@ -23,7 +23,7 @@
     },
     "scripts": {
         "start": "craco start",
-        "build": "craco build",
+        "build": "set BUILD_PATH=../server/public&& craco build",
         "test": "craco test",
         "eject": "react-scripts eject"
     },
