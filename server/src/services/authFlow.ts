@@ -25,7 +25,7 @@ export function authFlow(app) {
 
     const AUTH_OPTIONS = {
         callbackURL:
-            "https://git.heroku.com/secretsanta-react-ts/v1/google/auth/google/callback",
+            "https://secretsanta-react-ts.herokuapp.com/v1/google/auth/google/callback",
         clientID: config.CLIENT_ID,
         clientSecret: config.CLIENT_SECRET,
     };
