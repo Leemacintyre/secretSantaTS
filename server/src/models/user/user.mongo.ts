@@ -28,6 +28,7 @@ const userSchema = new Schema<UserData>({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
 });
 

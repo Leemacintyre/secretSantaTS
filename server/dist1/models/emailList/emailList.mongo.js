@@ -9,6 +9,7 @@ const emailListSchema = new mongoose_1.Schema({
     email: {
         type: String,
         trim: true,
+        unique: true,
     },
     groupId: {
         type: String,

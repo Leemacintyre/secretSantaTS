@@ -21,6 +21,7 @@ const userSchema = new mongoose_1.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
 });
 const userListModel = (0, mongoose_1.model)("User", userSchema);

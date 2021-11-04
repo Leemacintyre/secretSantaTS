@@ -15,6 +15,7 @@ const emailListSchema = new Schema<EmailList>({
     email: {
         type: String,
         trim: true,
+        unique: true,
     },
     groupId: {
         type: String,
