@@ -18,6 +18,7 @@ export interface currentUserData {
 const App = () => {
     const [cookies, setCookie] = useCookies(["currentUser"]);
     const [userData, setUserData] = useState<currentUserData | null>(null);
+
     useEffect(() => {
         (async () => {
             const data: currentUserData = await getCurrentUser();

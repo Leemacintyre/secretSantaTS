@@ -4,7 +4,7 @@ import { PlayerStateData } from "../pages/SignUpPage/SignUpPage.component";
 export const getAllPlayers = async () => {
     try {
         const { data } = await axios.get(
-            "https://secretsanta-react-ts.herokuapp.com//v1/emailList",
+            "https://secretsanta-react-ts.herokuapp.com/v1/emailList",
             {
                 withCredentials: true,
             }
@@ -19,7 +19,7 @@ export const addPlayerToGroup = async (player: PlayerStateData) => {
     const { email, fName, groupId } = player;
     try {
         axios.post(
-            "https://secretsanta-react-ts.herokuapp.com//v1/emailList/createEmailList",
+            "https://secretsanta-react-ts.herokuapp.com/v1/emailList/createEmailList",
             {
                 email,
                 fName,
@@ -34,7 +34,7 @@ export const addPlayerToGroup = async (player: PlayerStateData) => {
 export const sendOutEmails = async () => {
     try {
         const { data } = await axios.get(
-            "https://secretsanta-react-ts.herokuapp.com//v1/emailList/sendNewEmail",
+            "https://secretsanta-react-ts.herokuapp.com/v1/emailList/sendNewEmail",
             {
                 withCredentials: true,
             }
@@ -48,7 +48,7 @@ export const sendOutEmails = async () => {
 export const getCurrentUser = async () => {
     try {
         const { data } = await axios.get(
-            "https://secretsanta-react-ts.herokuapp.com//v1/currentuser",
+            "https://secretsanta-react-ts.herokuapp.com/v1/currentuser",
             {
                 withCredentials: true,
             }
