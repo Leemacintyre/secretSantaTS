@@ -37,13 +37,21 @@ exports.getAllEmailList = getAllEmailList;
 function createEmailList(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const newList = new emailList_mongo_1.default({
-                fName: req.body.fName,
+            const checkIfEmailExists = yield emailList_mongo_1.default.find({
                 email: req.body.email,
-                groupId: req.body.groupId,
             });
-            console.log(newList);
-            return yield newList.save();
+            if (checkIfEmailExists) {
+                throw Error;
+            }
+            else {
+                const newList = new emailList_mongo_1.default({
+                    fName: req.body.fName,
+                    email: req.body.email,
+                    groupId: req.body.groupId,
+                });
+                console.log(newList);
+                return yield newList.save();
+            }
         }
         catch (error) {
             console.log(`Could not post to email list ${error}`);

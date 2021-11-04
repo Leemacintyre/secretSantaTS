@@ -25,13 +25,20 @@ export async function getAllEmailList(
 
 export async function createEmailList(req: Request, res: Response) {
     try {
-        const newList: EmailList = new EmailListModel({
-            fName: req.body.fName,
+        const checkIfEmailExists = await EmailListModel.find({
             email: req.body.email,
-            groupId: req.body.groupId,
         });
-        console.log(newList);
-        return await newList.save();
+        if (checkIfEmailExists) {
+            throw Error;
+        } else {
+            const newList: EmailList = new EmailListModel({
+                fName: req.body.fName,
+                email: req.body.email,
+                groupId: req.body.groupId,
+            });
+            console.log(newList);
+            return await newList.save();
+        }
     } catch (error) {
         console.log(`Could not post to email list ${error}`);
     }
