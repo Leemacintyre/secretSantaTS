@@ -21,11 +21,11 @@ const Nav: React.FC<navData> = ({ currentUser }) => {
             </div>
             <div className={"nav-linkContainer"}>
                 {!currentUser?._id ? (
-                    <a href="https://git.heroku.com/secretsanta-react-ts/v1/google/auth/google">
+                    <a href="https://secretsanta-react-ts.herokuapp.com/v1/google/auth/google">
                         Login
                     </a>
                 ) : (
-                    <a href="https://git.heroku.com/secretsanta-react-ts/v1/google/logout">
+                    <a href="https://secretsanta-react-ts.herokuapp.com/v1/google/logout">
                         Log out
                     </a>
                 )}
