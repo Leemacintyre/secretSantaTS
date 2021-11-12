@@ -5,6 +5,7 @@ import sgMail from "@sendgrid/mail";
 import { EmailTo, mergeArray } from "../../utils/mergeArray";
 import { checkAndCreateShufflesArray, PeopleArr } from "../../utils/shuffle";
 import dotenv from "dotenv";
+import { IGetUserAuthInfoRequest } from "../../routes/emailList/emailList.controller";
 
 dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -23,15 +24,35 @@ export async function getAllEmailList(
     }
 }
 
-export async function createEmailList(req: Request, res: Response) {
+export async function createEmailList(
+    req: IGetUserAuthInfoRequest,
+    res: Response
+) {
+    const firstName = await req.user.fName;
+    const lastName = await req.user.lName;
+    const currentUser = `${firstName}${lastName}`;
+
     try {
-        const newList: EmailList = new EmailListModel({
-            fName: req.body.fName,
-            email: req.body.email,
-            groupId: req.body.groupId,
+        let userAlreadyOnEmailList: boolean = false;
+
+        const allEmailList: EmailList[] = await getAllEmailList(currentUser);
+        console.log("test", allEmailList);
+        allEmailList.forEach(({ email }) => {
+            if (req.body.email === email) {
+                userAlreadyOnEmailList = true;
+            }
         });
-        console.log(newList);
-        return await newList.save();
+        if (!userAlreadyOnEmailList) {
+            const newList: EmailList = new EmailListModel({
+                fName: req.body.fName,
+                email: req.body.email,
+                groupId: req.body.groupId,
+            });
+            console.log(newList);
+            return await newList.save();
+        } else {
+            return { error: "You are already a member of this group" };
+        }
     } catch (error) {
         console.log(`Could not post to email list ${error}`);
     }

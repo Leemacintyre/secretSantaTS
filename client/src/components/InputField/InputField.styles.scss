@@ -11,6 +11,18 @@
          bg-opacity-95
        hover:bg-yellow-50;
     }
+    .error {
+        @apply focus:border-red-700
+        border-red-500
+        focus:outline-none
+        transition duration-1000
+        font-semibold
+        text-2xl
+        rounded-lg
+        text-red-500
+         bg-opacity-95
+       hover:bg-yellow-50;
+    }
     label {
         @apply block
         capitalize

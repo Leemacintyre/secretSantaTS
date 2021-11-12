@@ -1,10 +1,10 @@
 import React from "react";
 import "./Nav.styles.scss";
 
-import { currentUserData } from "../App/App";
+import { CurrentUserData } from "../App/App";
 
 interface navData {
-    currentUser: currentUserData | null;
+    currentUser: CurrentUserData | null;
 }
 
 const Nav: React.FC<navData> = ({ currentUser }) => {
@@ -21,13 +21,11 @@ const Nav: React.FC<navData> = ({ currentUser }) => {
             </div>
             <div className={"nav-linkContainer"}>
                 {!currentUser?._id ? (
-                    <a href="https://secretsanta-react-ts.herokuapp.com/v1/google/auth/google">
+                    <a href="http://localhost:8000/v1/google/auth/google">
                         Login
                     </a>
                 ) : (
-                    <a href="https://secretsanta-react-ts.herokuapp.com/v1/google/logout">
-                        Log out
-                    </a>
+                    <a href="http://localhost:8000/v1/google/logout">Log out</a>
                 )}
             </div>
         </div>

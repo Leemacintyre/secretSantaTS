@@ -9,7 +9,7 @@ export async function httpGetCurrentUser(
 ) {
     try {
         // console.log("httpGetCurrentUser1", req.user.id);
-        const currentUser: string = await req.user.id;
+        const currentUser: string = await req.user._id;
         // const currentUser = "113577393364732277603";
         return res.status(200).json(await getCurrentUser(currentUser));
     } catch (error) {

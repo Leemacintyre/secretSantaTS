@@ -10,8 +10,8 @@ function redirectToHome(req, res) {
     // if (process.env.NODE_ENV === "production") {
     //     return res.redirect("");
     // }
-    return res.redirect("https://secretsanta-react-ts.herokuapp.com");
-    // return res.redirect("http://localhost:3000");
+    // return res.redirect("https://secretsanta-react-ts.herokuapp.com");
+    return res.redirect("http://localhost:3000");
 }
 exports.redirectToHome = redirectToHome;
 function redirectToLogin(req, res) {
@@ -19,8 +19,8 @@ function redirectToLogin(req, res) {
     // if (process.env.NODE_ENV === "production") {
     //     return res.redirect("");
     // }
-    return res.redirect("https://secretsanta-react-ts.herokuapp.com/login");
-    // return res.redirect("http://localhost:3000/login");
+    // return res.redirect("https://secretsanta-react-ts.herokuapp.com/login");
+    return res.redirect("http://localhost:3000/login");
 }
 exports.redirectToLogin = redirectToLogin;
 //# sourceMappingURL=googleAuth.controller.js.map

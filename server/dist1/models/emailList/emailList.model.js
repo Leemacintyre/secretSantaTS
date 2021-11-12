@@ -36,14 +36,30 @@ function getAllEmailList(currentUser) {
 exports.getAllEmailList = getAllEmailList;
 function createEmailList(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        const firstName = yield req.user.fName;
+        const lastName = yield req.user.lName;
+        const currentUser = `${firstName}${lastName}`;
         try {
-            const newList = new emailList_mongo_1.default({
-                fName: req.body.fName,
-                email: req.body.email,
-                groupId: req.body.groupId,
+            let userAlreadyOnEmailList = false;
+            const allEmailList = yield getAllEmailList(currentUser);
+            console.log("test", allEmailList);
+            allEmailList.forEach(({ email }) => {
+                if (req.body.email === email) {
+                    userAlreadyOnEmailList = true;
+                }
             });
-            console.log(newList);
-            return yield newList.save();
+            if (!userAlreadyOnEmailList) {
+                const newList = new emailList_mongo_1.default({
+                    fName: req.body.fName,
+                    email: req.body.email,
+                    groupId: req.body.groupId,
+                });
+                console.log(newList);
+                return yield newList.save();
+            }
+            else {
+                return { error: "You are already a member of this group" };
+            }
         }
         catch (error) {
             console.log(`Could not post to email list ${error}`);

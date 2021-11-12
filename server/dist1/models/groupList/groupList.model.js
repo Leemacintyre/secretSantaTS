@@ -8,23 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpGetCurrentUser = void 0;
-const user_model_1 = require("../../models/user/user.model");
-function httpGetCurrentUser(req, res) {
+exports.getAllGroupList = void 0;
+const groupList_mongo_1 = __importDefault(require("./groupList.mongo"));
+function getAllGroupList(currentUser) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // console.log("httpGetCurrentUser1", req.user.id);
-            const currentUser = yield req.user._id;
-            // const currentUser = "113577393364732277603";
-            return res.status(200).json(yield (0, user_model_1.getCurrentUser)(currentUser));
+            console.log(currentUser);
+            const groupList = yield groupList_mongo_1.default.find({ userId: currentUser });
+            console.log(groupList);
+            return groupList;
         }
         catch (error) {
-            return res
-                .status(400)
-                .json({ error: error, location: "httpGetCurrentUser" });
+            console.log(`could not get email list ${error}`);
         }
     });
 }
-exports.httpGetCurrentUser = httpGetCurrentUser;
-//# sourceMappingURL=currentUser.controller.js.map
+exports.getAllGroupList = getAllGroupList;
+//# sourceMappingURL=groupList.model.js.map

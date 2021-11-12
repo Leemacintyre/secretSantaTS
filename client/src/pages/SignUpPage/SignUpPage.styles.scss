@@ -3,9 +3,10 @@
 
     .signUpPage-form-container {
         @apply w-96
-         bg-gray-300 
+         bg-gray-300
+         bg-opacity-95
          h-96 
-         rounded-lg 
+         rounded-3xl 
          text-center 
          flex 
          flex-col 

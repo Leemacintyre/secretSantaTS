@@ -6,7 +6,13 @@ import {
 import { Request, Response } from "express";
 
 export interface IGetUserAuthInfoRequest extends Request {
-    user: any;
+    user: {
+        _id: string;
+        fName: string;
+        lName: string;
+        profilePicture: string;
+        email: string;
+    };
 }
 
 export async function httpGetAllEmailList(
@@ -27,7 +33,10 @@ export async function httpGetAllEmailList(
     }
 }
 
-export async function httpCreateEmailList(req: Request, res: Response) {
+export async function httpCreateEmailList(
+    req: IGetUserAuthInfoRequest,
+    res: Response
+) {
     try {
         console.log("httpCreateEmailList");
         return res.status(201).json(await createEmailList(req, res));

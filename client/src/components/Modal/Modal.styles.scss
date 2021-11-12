@@ -1,0 +1,27 @@
+.modal-wrapper {
+    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-30 outline-none focus:outline-none cursor-default;
+    .modal-container {
+        @apply relative w-auto mx-auto max-w-sm z-50;
+        .modal-modalBg {
+            @apply border-0 rounded-t-3xl rounded-b-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none;
+            .modal-titleContainer {
+                @apply flex items-start justify-between p-5 border-b border-solid border-purple-200 bg-purple-700 rounded-t-2xl;
+                .modal-title {
+                    @apply text-3xl capitalize font-semibold text-white;
+                }
+            }
+            .modal-modalBody {
+                @apply relative p-6 flex-auto;
+                .modal-modalContent {
+                    @apply my-4 text-gray-900 text-lg leading-relaxed;
+                }
+            }
+            .modal-modalFooter {
+                @apply flex justify-end p-6 border-t border-solid border-purple-200 rounded-b;
+            }
+        }
+    }
+}
+.modal-bgGradient {
+    @apply fixed opacity-30 inset-0 z-40 bg-gray-900 cursor-pointer;
+}

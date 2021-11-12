@@ -6,8 +6,10 @@ interface InputFieldData {
     name: string;
     label?: string;
     type: string;
-    value: string;
+    value: string | undefined;
     otherProps?: any;
+    error?: boolean;
+    // val?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputField: React.FC<InputFieldData> = ({
@@ -15,6 +17,7 @@ const InputField: React.FC<InputFieldData> = ({
     label,
     type,
     value,
+    error,
     ...otherProps
 }) => {
     return (
@@ -24,6 +27,7 @@ const InputField: React.FC<InputFieldData> = ({
                 <textarea cols={30} rows={10} {...otherProps}></textarea>
             ) : (
                 <input
+                    className={error ? "error" : ""}
                     onChange={handleChange}
                     type={type}
                     value={value}

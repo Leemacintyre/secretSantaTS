@@ -7,7 +7,7 @@ import Nav from "../Nav/Nav.component";
 
 import "./App.css";
 
-export interface currentUserData {
+export interface CurrentUserData {
     email: string;
     fName: string;
     lName: string;
@@ -17,11 +17,11 @@ export interface currentUserData {
 
 const App = () => {
     const [cookies, setCookie] = useCookies(["currentUser"]);
-    const [userData, setUserData] = useState<currentUserData | null>(null);
+    const [userData, setUserData] = useState<CurrentUserData | null>(null);
 
     useEffect(() => {
         (async () => {
-            const data: currentUserData = await getCurrentUser();
+            const data: CurrentUserData = await getCurrentUser();
             setUserData(data);
         })();
     }, []);
@@ -35,6 +35,7 @@ const App = () => {
             <Nav currentUser={cookies.currentUser} />
             <Switch>
                 <Route path="/" exact component={SignUpPage} />
+                <Route path="/:currentGroupId" exact component={SignUpPage} />
             </Switch>
         </div>
     );
